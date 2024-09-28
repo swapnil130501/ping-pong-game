@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
     let ball = document.getElementById("ball");
     let table = document.getElementById("ping-pong-table");
+    let paddle = document.getElementById("paddle");
 
     let ballX = 10; // dist of the top of the ball w.r.t to the ping pong table
     let ballY = 10; // dist of the left of the ball w.r.t to the ping pong table
@@ -35,6 +36,19 @@ document.addEventListener("DOMContentLoaded", () => {
             dy = dy * -1;
         }
 
-
     }, 1);
+
+    let paddleY = 0;
+    let dpy = 5;
+    document.addEventListener('keydown', (event) => {
+        if(event.keyCode === 38 && paddleY > 0) {
+            paddleY += (-1) * dpy;
+        }
+
+        else if(event.keyCode === 40 && paddleY < table.offsetHeight - paddle.offsetHeight) {
+            paddleY += dpy;
+        }
+
+        paddle.style.top = `${paddleY}px`
+    })
 })
