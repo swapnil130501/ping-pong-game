@@ -28,11 +28,18 @@ document.addEventListener("DOMContentLoaded", () => {
         //     dy = dy * -1;
         // }
 
-        // collision
+        /** 
+        collision logic
+        ballX < paddle.offsetLeft + paddle.offsetWidth -> if left(wrt to table) of the ball < right(wrt to table) of the paddle
+        ballY > paddle.offsetTop -> if top (wrt to table) of ball > top of paddle ball within the paddle region upar se
+        ballY - ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight -> ball within the paddle region neche se
+        ballY + ball.offsetHeight -> bottom of the ball
+        paddle.offsetTop + paddle.offsetHeight -> bottom of the paddle
+        */
 
         if(ballX < paddle.offsetLeft + paddle.offsetWidth && 
             ballY > paddle.offsetTop && 
-            ballY - ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight) {
+            ballY + ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight) {
             dx = dx * -1;
         }
 
