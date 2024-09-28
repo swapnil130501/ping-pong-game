@@ -28,6 +28,14 @@ document.addEventListener("DOMContentLoaded", () => {
         //     dy = dy * -1;
         // }
 
+        // collision
+
+        if(ballX < paddle.offsetLeft + paddle.offsetWidth && 
+            ballY > paddle.offsetTop && 
+            ballY - ball.offsetHeight < paddle.offsetTop + paddle.offsetHeight) {
+            dx = dx * -1;
+        }
+
         if(ballX > table.offsetWidth - ball.offsetWidth || ballX <= 0) {
             dx = dx * -1;
         }
@@ -41,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
     let paddleY = 0;
     let dpy = 5;
     document.addEventListener('keydown', (event) => {
+        event.preventDefault();
+
         if(event.keyCode === 38 && paddleY > 0) {
             paddleY += (-1) * dpy;
         }
@@ -50,5 +60,5 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         paddle.style.top = `${paddleY}px`
-    })
+    });
 })
